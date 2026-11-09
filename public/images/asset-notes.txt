@@ -1,6 +1,6 @@
 Hero currently used: architecture-hero.jpg
 User-supplied Daniel Sessler photograph: daniel-sessler-gtBVNF6pCU8-unsplash.jpg
-Displayed in monochrome using CSS. Original file copied without pixel editing.
+Original colors are retained with no image filter. File copied without pixel editing. A separate overlay supports text contrast.
 
 Original assets generated with the built-in image_gen tool.
 

@@ -47,6 +47,6 @@ The `.openai/hosting.json` file retains the private Sites project identity and D
 
 ## Images and type
 
-The hero uses the Daniel Sessler Unsplash photograph supplied by the owner. The image is displayed in monochrome using CSS. The material study is an original generated illustration. Details are recorded in `public/images/asset-notes.txt`. Manrope is served locally with its font license.
+The hero uses the Daniel Sessler Unsplash photograph supplied by the owner. The hero uses the original photograph colors without an image filter. A separate overlay supports text contrast. The material study is an original generated illustration. Details are recorded in `public/images/asset-notes.txt`. Manrope is served locally with its font license.
 
 The product example uses illustrative data and is not a live supplier catalog or quotation.
