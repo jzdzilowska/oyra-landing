@@ -1,3 +1,7 @@
+Hero currently used: architecture-hero.jpg
+User-supplied Daniel Sessler photograph: daniel-sessler-gtBVNF6pCU8-unsplash.jpg
+Displayed in monochrome using CSS. Original file copied without pixel editing.
+
 Original assets generated with the built-in image_gen tool.
 
 Hero file: public/images/architecture-hero.png

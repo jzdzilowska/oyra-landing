@@ -7,3 +7,5 @@ The interactive product study is clearly illustrative. No real supplier quotatio
 All demo buttons open an accessible dialog. Requests are saved in the `demo_requests` D1 table. There is no calendar integration or automatic email notification yet. Success confirms receipt and explicitly says no time has been booked. No public endpoint lists requests. Future inbox notifications or scheduling should be configured before public launch.
 
 Original hero and material-study imagery uses the built-in image generation tool. Assets live in `public/images`. Complete prompts and provenance are recorded in `public/images/asset-notes.txt`.
+
+The hero now uses the Daniel Sessler Unsplash photograph supplied by the user, in `public/images/architecture-hero.jpg`. The generated hero is retained as an unused alternative. Decorative periods are removed from the wordmarks and display headings.

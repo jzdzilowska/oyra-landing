@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://oyra-materials.phia-4091.chatgpt.site"),
   title: "Oyra — Material sourcing software",
   description: "Oyra helps architects and interior designers compare materials, suppliers, prices, and alternatives. Bring your finish schedule and request a demo.",
-  openGraph: { title: "Oyra — Material sourcing software", description: "Compare materials and supplier quotes with Oyra. Request a demo for your studio.", images: [{ url: "/images/architecture-hero.png", alt: "Stone, dark timber, and considered architecture" }], type: "website" },
+  openGraph: { title: "Oyra — Material sourcing software", description: "Compare materials and supplier quotes with Oyra. Request a demo for your studio.", images: [{ url: "/images/architecture-hero.jpg", alt: "Architectural facade photographed by Daniel Sessler" }], type: "website" },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
