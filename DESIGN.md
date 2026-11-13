@@ -1,6 +1,6 @@
 # Oyra website
 
-Architectural and editorial, guided by the six supplied references. Full-bleed imagery, an asymmetrical grid, large light sans serif headings, monospaced labels, fine rules, and generous spacing. Final user direction: pure white (#FFFFFF) and pure black (#000000), with neutral gray secondary text and fine rules. Interface surfaces are white or black; no off-white backgrounds. No beige, blue, or colored accents. The material study is displayed in monochrome; the user-supplied hero retains its original colors. Copy is factual and concise; decorative manifesto copy has been removed.
+Architectural and editorial, guided by the six supplied references. Full-bleed imagery, an asymmetrical grid, large light sans serif headings, small sans serif labels using the navigation typeface, fine rules, and generous spacing. Final user direction: pure white (#FFFFFF) and pure black (#000000), with neutral gray secondary text and fine rules. Interface surfaces are white or black; no off-white backgrounds. No beige, blue, or colored accents. The material study is displayed in monochrome; the user-supplied hero retains its original colors. Copy is factual and concise; decorative manifesto copy has been removed.
 
 The interactive product study is clearly illustrative. No real supplier quotations, customer logos, testimonials, traction, or guaranteed savings are invented.
 
@@ -12,4 +12,8 @@ The hero uses the user-supplied Declan Sun Unsplash photograph, in `public/image
 
 The latest direction uses a compact transparent navigation overlay with white text. Desktop header is 72 pixels, mobile header 64 pixels, and the scrolled header 64 pixels. The hero has no image color filter.
 
-Hero headline: “Keep the vision / Find a better source”. Text sits over the darker middle of the photograph, with a desktop crop that reduces the pale foreground wall and a separate mobile crop.
+Hero headline: “A new standard / for material sourcing”. The photograph is anchored at the bottom, cropping the upper wall to show more of the staircase and lower foreground, with separate desktop and mobile crops.
+
+The hero audience eyebrow is removed. Small labels use the same Manrope typeface as navigation.
+
+The hero bottom strip (product label and scroll link) is removed. The headline and demo button sit closer to the bottom of the photograph.
