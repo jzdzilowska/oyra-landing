@@ -17,3 +17,5 @@ Hero headline: “A new standard / for material sourcing”. The photograph is a
 The hero audience eyebrow is removed. Small labels use the same Manrope typeface as navigation.
 
 The hero bottom strip (product label and scroll link) is removed. The headline and demo button sit closer to the bottom of the photograph.
+
+The first section below the hero uses pure black with white text. Desktop wheel scrolling has gentle easing (Lenis, lerp 0.12); touch scrolling stays native. Easing is disabled for reduced-motion preferences and paused while the demo dialog is open. Navigation anchors retain a header offset.

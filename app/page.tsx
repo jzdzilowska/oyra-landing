@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import Lenis from "lenis";
 
 function Arrow({ diagonal = false, className = "" }: { diagonal?: boolean; className?: string }) {
   return <svg className={`arrow ${className}`} width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={diagonal ? "M6 18 18 6M6 6h12v12" : "M4 12h15m-6-6 6 6-6 6"} stroke="currentColor" strokeWidth="1.35" strokeLinecap="square" /></svg>;
@@ -73,15 +74,45 @@ function DemoDialog({ onClose }: { onClose: () => void }) {
       setStatus("success");
     } catch (e) { setError(e instanceof Error ? e.message : "Something went wrong. Please try again."); setStatus("error"); }
   }
-  return <dialog className="demo-dialog" ref={dialogRef} onCancel={onClose} onClick={event => { if (event.target === event.currentTarget) onClose(); }} aria-labelledby="demo-title"><div className="dialog-layout"><div className="dialog-visual"><img src="/images/material-study.png" alt="A study of stone, timber, and architectural material samples" /><span className="dialog-brand">oyra</span><p>See Oyra<br />in practice.</p><span className="mono">MATERIAL SOURCING SOFTWARE</span></div><div className="dialog-content"><button className="close-dialog" onClick={onClose} aria-label="Close demo request"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6" fill="none" stroke="currentColor" strokeWidth="1.2" /></svg></button>{status === "success" ? <div className="form-success" role="status"><span className="success-mark">✓</span><span className="mono">REQUEST RECEIVED</span><h2 id="demo-title">Request received</h2><p>Your request is saved. A time has not been booked yet.</p><button className="button button-dark" onClick={onClose}>Back to Oyra <Arrow /></button></div> : <><span className="eyebrow"><i /> DEMO REQUEST</span><h2 id="demo-title">Book a demo</h2><p className="form-intro">Leave your details and what you want to see.</p><form onSubmit={submit}><div className="form-columns"><label>Your name<input name="name" autoComplete="name" placeholder="Full name" maxLength={120} required /></label><label>Work email<input name="email" type="email" autoComplete="email" placeholder="you@studio.com" maxLength={254} required /></label></div><div className="form-columns"><label>Studio or company<input name="studio" autoComplete="organization" placeholder="Studio name" maxLength={160} required /></label><label>I work in<select name="role" required defaultValue=""><option value="" disabled>Select your field</option><option>Interior design</option><option>Architecture</option><option>Development</option><option>Other</option></select></label></div><label>What would you like to explore? <span className="optional">Optional</span><textarea name="context" placeholder="Material categories or a sourcing question…" rows={3} maxLength={1500} /></label><div className="honeypot" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>{status === "error" && <p className="form-error" role="alert">{error}</p>}<button className="button button-dark form-submit" disabled={status === "sending"} type="submit">{status === "sending" ? "Sending your request…" : "Request a demo"}<Arrow /></button><p className="form-privacy">We’ll use these details to respond to your demo request. Please don’t include confidential project information.</p></form></>}</div></div></dialog>;
+  return <dialog data-lenis-prevent="" className="demo-dialog" ref={dialogRef} onCancel={onClose} onClick={event => { if (event.target === event.currentTarget) onClose(); }} aria-labelledby="demo-title"><div className="dialog-layout"><div className="dialog-visual"><img src="/images/material-study.png" alt="A study of stone, timber, and architectural material samples" /><span className="dialog-brand">oyra</span><p>See Oyra<br />in practice.</p><span className="mono">MATERIAL SOURCING SOFTWARE</span></div><div className="dialog-content"><button className="close-dialog" onClick={onClose} aria-label="Close demo request"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6" fill="none" stroke="currentColor" strokeWidth="1.2" /></svg></button>{status === "success" ? <div className="form-success" role="status"><span className="success-mark">✓</span><span className="mono">REQUEST RECEIVED</span><h2 id="demo-title">Request received</h2><p>Your request is saved. A time has not been booked yet.</p><button className="button button-dark" onClick={onClose}>Back to Oyra <Arrow /></button></div> : <><span className="eyebrow"><i /> DEMO REQUEST</span><h2 id="demo-title">Book a demo</h2><p className="form-intro">Leave your details and what you want to see.</p><form onSubmit={submit}><div className="form-columns"><label>Your name<input name="name" autoComplete="name" placeholder="Full name" maxLength={120} required /></label><label>Work email<input name="email" type="email" autoComplete="email" placeholder="you@studio.com" maxLength={254} required /></label></div><div className="form-columns"><label>Studio or company<input name="studio" autoComplete="organization" placeholder="Studio name" maxLength={160} required /></label><label>I work in<select name="role" required defaultValue=""><option value="" disabled>Select your field</option><option>Interior design</option><option>Architecture</option><option>Development</option><option>Other</option></select></label></div><label>What would you like to explore? <span className="optional">Optional</span><textarea name="context" placeholder="Material categories or a sourcing question…" rows={3} maxLength={1500} /></label><div className="honeypot" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>{status === "error" && <p className="form-error" role="alert">{error}</p>}<button className="button button-dark form-submit" disabled={status === "sending"} type="submit">{status === "sending" ? "Sending your request…" : "Request a demo"}<Arrow /></button><p className="form-privacy">We’ll use these details to respond to your demo request. Please don’t include confidential project information.</p></form></>}</div></div></dialog>;
 }
 
 export default function Home() {
+  const scrollRef = useRef<Lenis | null>(null);
   const [demoOpen, setDemoOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [faq, setFaq] = useState<number | null>(0);
   const [privacy, setPrivacy] = useState(false);
+  useEffect(() => {
+    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const configureScrolling = () => {
+      scrollRef.current?.destroy();
+      scrollRef.current = null;
+      if (motionPreference.matches) return;
+      const scroll = new Lenis({
+        autoRaf: true,
+        lerp: 0.12,
+        smoothWheel: true,
+        syncTouch: false,
+        anchors: true,
+        prevent: node => node.closest("dialog") !== null,
+      });
+      if (document.querySelector("dialog[open]")) scroll.stop();
+      scrollRef.current = scroll;
+    };
+    configureScrolling();
+    motionPreference.addEventListener("change", configureScrolling);
+    return () => {
+      motionPreference.removeEventListener("change", configureScrolling);
+      scrollRef.current?.destroy();
+      scrollRef.current = null;
+    };
+  }, []);
+  useEffect(() => {
+    if (demoOpen) scrollRef.current?.stop();
+    else scrollRef.current?.start();
+  }, [demoOpen]);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     onScroll(); window.addEventListener("scroll", onScroll, { passive: true });

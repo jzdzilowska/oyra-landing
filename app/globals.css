@@ -58,3 +58,12 @@ html{scroll-padding-top:72px}.site-header{height:88px;padding:0 6%}.brand{font-s
   .hero h1{font-size:clamp(32px,8.2vw,56px)}
   .hero-shade{background:linear-gradient(90deg,#00000033,transparent 85%),linear-gradient(0deg,#00000055,transparent 65%)}
 }
+
+/* Inverted introduction panel. */
+.approach{background:#000000;color:#ffffff}
+.approach .section-label>span,.approach-copy p{color:#ffffff}
+
+/* Lenis base styles, kept local for the Worker stylesheet pipeline. */
+html.lenis,html.lenis body{height:auto}
+.lenis:not(.lenis-autoToggle).lenis-stopped{overflow:clip}
+.lenis [data-lenis-prevent],.lenis [data-lenis-prevent-wheel],.lenis [data-lenis-prevent-touch]{overscroll-behavior:contain}
