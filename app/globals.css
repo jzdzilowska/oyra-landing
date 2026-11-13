@@ -67,3 +67,39 @@ html{scroll-padding-top:72px}.site-header{height:88px;padding:0 6%}.brand{font-s
 html.lenis,html.lenis body{height:auto}
 .lenis:not(.lenis-autoToggle).lenis-stopped{overflow:clip}
 .lenis [data-lenis-prevent],.lenis [data-lenis-prevent-wheel],.lenis [data-lenis-prevent-touch]{overscroll-behavior:contain}
+
+/* Agreed slab identity: static in navigation and animated only in the opening screen. */
+.site-header .brand-lockup,.site-header:not(.header-solid) .brand-lockup,.header-solid .brand-lockup{display:inline-flex;align-items:center;gap:9px;font-size:0;letter-spacing:0;line-height:1}
+.brand-lockup .slab-mark{display:block;width:22px;height:22px;flex:none}
+.brand-wordmark{display:block;width:76px;height:22px;object-fit:contain;transition:filter .4s ease}
+.site-header:not(.header-solid) .brand-wordmark,.header-solid.header-on-dark .brand-wordmark{filter:invert(1)}
+.header-solid .brand-wordmark{filter:none}
+.brand-large{width:min(100%,1100px);margin:45px 0 38px;line-height:1}
+.brand-wordmark-large{width:100%;height:auto;object-fit:contain}
+.window-wordmark,.dialog-brand{letter-spacing:-.04em;font-weight:500}
+.header-solid{background:rgb(255 255 255 / 4%);color:#000000;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:0;box-shadow:0 1px 0 rgb(255 255 255 / 8%)}
+.header-solid.header-on-dark{color:#ffffff}
+.header-solid .nav-demo{border-color:currentColor}
+.brand-loader{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:#000000;color:#ffffff;opacity:1;transition:opacity .7s ease}
+.brand-loader .slab-mark{width:72px;height:72px;display:block}
+.brand-loader.is-leaving{opacity:0}
+.slab-block{transform-box:fill-box}
+.is-animated .slab-top{transform-origin:right center;animation:slab-top-build 2.6s cubic-bezier(.65,0,.35,1) both}
+.is-animated .slab-left{transform-origin:center top;animation:slab-left-build 2.6s cubic-bezier(.65,0,.35,1) both}
+.is-animated .slab-bottom{transform-origin:left center;animation:slab-bottom-build 2.6s cubic-bezier(.65,0,.35,1) both}
+.is-animated .slab-right{transform-origin:center bottom;animation:slab-right-build 2.6s cubic-bezier(.65,0,.35,1) both}
+@keyframes slab-top-build{0%,4%{transform:scaleX(0)}20%,100%{transform:scaleX(1)}}
+@keyframes slab-left-build{0%,20%{transform:scaleY(0)}36%,100%{transform:scaleY(1)}}
+@keyframes slab-bottom-build{0%,36%{transform:scaleX(0)}52%,100%{transform:scaleX(1)}}
+@keyframes slab-right-build{0%,52%{transform:scaleY(0)}68%,100%{transform:scaleY(1)}}
+@media(max-width:760px){.site-header .brand-lockup{gap:8px}.brand-lockup .slab-mark{width:20px;height:20px}.brand-wordmark{width:69px;height:20px}.brand-large{margin:35px 0}.brand-loader .slab-mark{width:64px;height:64px}}
+@media(prefers-reduced-motion:reduce){.is-animated .slab-block{animation:none;transform:none}}
+
+/* A fixed header lets the glass dissolve in both scroll directions without a position jump. */
+.site-header{position:fixed;isolation:isolate;transition:height .45s ease,color .4s ease}
+.site-header::before{content:"";position:absolute;inset:0 0 auto;height:155px;background:linear-gradient(180deg,#000000b3,transparent);z-index:-1;pointer-events:none;opacity:1;transition:opacity .45s ease}
+.site-header.header-solid::before{opacity:0}
+.site-header::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:rgb(255 255 255 / 4%);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 1px 0 rgb(255 255 255 / 8%);opacity:0;transition:opacity .45s ease}
+.site-header.header-solid::after{opacity:1}
+.site-header.header-solid{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;animation:none}
+.site-header .nav-demo{transition:height .45s ease,border-color .4s ease,color .4s ease}

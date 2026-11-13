@@ -19,3 +19,11 @@ The hero audience eyebrow is removed. Small labels use the same Manrope typeface
 The hero bottom strip (product label and scroll link) is removed. The headline and demo button sit closer to the bottom of the photograph.
 
 The first section below the hero uses pure black with white text. Desktop wheel scrolling has gentle easing (Lenis, lerp 0.12); touch scrolling stays native. Easing is disabled for reduced-motion preferences and paused while the demo dialog is open. Navigation anchors retain a header offset.
+
+The agreed slab symbol and outlined Manrope OYRA wordmark are static in the navigation; the footer uses the same wordmark. A black opening screen displays only the white slab symbol building top/right-to-left, left/top-to-bottom, bottom/left-to-right, right/bottom-to-top, then holding until three seconds have elapsed. The page is inert and scrolling is paused during this screen. Reduced-motion preferences show the completed mark without animation. The scrolled navbar uses an 18 px backdrop blur and 4% white haze; text and logo adapt to light or dark sections.
+
+Navbar identity is compact (22 px symbol and 76 px wordmark on desktop; 20 px and 69 px on mobile). The header remains fixed throughout; the glass layer and hero contrast gradient crossfade over 450 ms in either scroll direction, removing the previous abrupt position switch at the top.
+
+The loading symbol is 72 px on desktop and 64 px on mobile. The black overlay begins fading after 2.3 seconds and fully reveals the page at 3 seconds, rather than cutting away.
+
+The symbol build runs on a 2.6-second animation timeline (slightly faster), completing its four segments before the loading overlay fades; total opening-screen duration remains three seconds.

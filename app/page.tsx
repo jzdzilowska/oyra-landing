@@ -7,8 +7,20 @@ function Arrow({ diagonal = false, className = "" }: { diagonal?: boolean; class
   return <svg className={`arrow ${className}`} width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={diagonal ? "M6 18 18 6M6 6h12v12" : "M4 12h15m-6-6 6 6-6 6"} stroke="currentColor" strokeWidth="1.35" strokeLinecap="square" /></svg>;
 }
 
+function SlabMark({ animated = false }: { animated?: boolean }) {
+  return <svg className={`slab-mark${animated ? " is-animated" : ""}`} viewBox="0 0 96 96" fill="currentColor" aria-hidden="true">
+    <rect className="slab-block slab-top" x="22" y="0" width="74" height="18" />
+    <rect className="slab-block slab-left" x="0" y="0" width="18" height="74" />
+    <rect className="slab-block slab-bottom" x="0" y="78" width="74" height="18" />
+    <rect className="slab-block slab-right" x="78" y="22" width="18" height="74" />
+  </svg>;
+}
+
 function Brand({ large = false }: { large?: boolean }) {
-  return <a className={`brand ${large ? "brand-large" : ""}`} href="#top" aria-label="Oyra home">oyra</a>;
+  return <a className={`brand ${large ? "brand-large" : "brand-lockup"}`} href="#top" aria-label="Oyra home">
+    {!large && <SlabMark />}
+    <img className={large ? "brand-wordmark-large" : "brand-wordmark"} src="/brand/oyra-wordmark.svg" alt="" />
+  </a>;
 }
 
 const materials = [
@@ -37,7 +49,7 @@ function ProductStudy() {
       <p className="study-aside">Select a category to explore the example.</p>
     </div>
     <div className="product-window" id="material-example" role="tabpanel" aria-labelledby={`material-tab-${active}`}>
-      <div className="window-header"><span className="window-wordmark">oyra</span><span className="mono">PROJECT 001 / MATERIAL STUDY</span><span className="window-menu"><i /><i /><i /></span></div>
+      <div className="window-header"><span className="window-wordmark">OYRA</span><span className="mono">PROJECT 001 / MATERIAL STUDY</span><span className="window-menu"><i /><i /><i /></span></div>
       <div className="window-project"><div><span className="mono light-label">YOUR WORKSPACE</span><h3>{view === "schedule" ? "Finish schedule" : "Source comparison"}</h3></div><span className="project-count">{String(active + 1).padStart(2, "0")} <span>of 03</span></span></div>
       <div className="window-tabs" role="tablist" aria-label="Product preview view"><button role="tab" aria-selected={view === "schedule"} onClick={() => setView("schedule")}>Finish schedule</button><button role="tab" aria-selected={view === "comparison"} onClick={() => setView("comparison")}>Source comparison <span>2</span></button></div>
       <div className="selected-material"><div className={`material-swatch ${m.swatch}`} /><div className="material-info"><span className="mono light-label">{m.code} / ORIGINAL SPECIFICATION</span><h4>{m.title}</h4><p>{m.finish}</p></div><span className="material-quantity">{m.quantity.toLocaleString()} <span>{m.unit}</span></span></div>
@@ -74,7 +86,7 @@ function DemoDialog({ onClose }: { onClose: () => void }) {
       setStatus("success");
     } catch (e) { setError(e instanceof Error ? e.message : "Something went wrong. Please try again."); setStatus("error"); }
   }
-  return <dialog data-lenis-prevent="" className="demo-dialog" ref={dialogRef} onCancel={onClose} onClick={event => { if (event.target === event.currentTarget) onClose(); }} aria-labelledby="demo-title"><div className="dialog-layout"><div className="dialog-visual"><img src="/images/material-study.png" alt="A study of stone, timber, and architectural material samples" /><span className="dialog-brand">oyra</span><p>See Oyra<br />in practice.</p><span className="mono">MATERIAL SOURCING SOFTWARE</span></div><div className="dialog-content"><button className="close-dialog" onClick={onClose} aria-label="Close demo request"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6" fill="none" stroke="currentColor" strokeWidth="1.2" /></svg></button>{status === "success" ? <div className="form-success" role="status"><span className="success-mark">✓</span><span className="mono">REQUEST RECEIVED</span><h2 id="demo-title">Request received</h2><p>Your request is saved. A time has not been booked yet.</p><button className="button button-dark" onClick={onClose}>Back to Oyra <Arrow /></button></div> : <><span className="eyebrow"><i /> DEMO REQUEST</span><h2 id="demo-title">Book a demo</h2><p className="form-intro">Leave your details and what you want to see.</p><form onSubmit={submit}><div className="form-columns"><label>Your name<input name="name" autoComplete="name" placeholder="Full name" maxLength={120} required /></label><label>Work email<input name="email" type="email" autoComplete="email" placeholder="you@studio.com" maxLength={254} required /></label></div><div className="form-columns"><label>Studio or company<input name="studio" autoComplete="organization" placeholder="Studio name" maxLength={160} required /></label><label>I work in<select name="role" required defaultValue=""><option value="" disabled>Select your field</option><option>Interior design</option><option>Architecture</option><option>Development</option><option>Other</option></select></label></div><label>What would you like to explore? <span className="optional">Optional</span><textarea name="context" placeholder="Material categories or a sourcing question…" rows={3} maxLength={1500} /></label><div className="honeypot" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>{status === "error" && <p className="form-error" role="alert">{error}</p>}<button className="button button-dark form-submit" disabled={status === "sending"} type="submit">{status === "sending" ? "Sending your request…" : "Request a demo"}<Arrow /></button><p className="form-privacy">We’ll use these details to respond to your demo request. Please don’t include confidential project information.</p></form></>}</div></div></dialog>;
+  return <dialog data-lenis-prevent="" className="demo-dialog" ref={dialogRef} onCancel={onClose} onClick={event => { if (event.target === event.currentTarget) onClose(); }} aria-labelledby="demo-title"><div className="dialog-layout"><div className="dialog-visual"><img src="/images/material-study.png" alt="A study of stone, timber, and architectural material samples" /><span className="dialog-brand">OYRA</span><p>See Oyra<br />in practice.</p><span className="mono">MATERIAL SOURCING SOFTWARE</span></div><div className="dialog-content"><button className="close-dialog" onClick={onClose} aria-label="Close demo request"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6" fill="none" stroke="currentColor" strokeWidth="1.2" /></svg></button>{status === "success" ? <div className="form-success" role="status"><span className="success-mark">✓</span><span className="mono">REQUEST RECEIVED</span><h2 id="demo-title">Request received</h2><p>Your request is saved. A time has not been booked yet.</p><button className="button button-dark" onClick={onClose}>Back to Oyra <Arrow /></button></div> : <><span className="eyebrow"><i /> DEMO REQUEST</span><h2 id="demo-title">Book a demo</h2><p className="form-intro">Leave your details and what you want to see.</p><form onSubmit={submit}><div className="form-columns"><label>Your name<input name="name" autoComplete="name" placeholder="Full name" maxLength={120} required /></label><label>Work email<input name="email" type="email" autoComplete="email" placeholder="you@studio.com" maxLength={254} required /></label></div><div className="form-columns"><label>Studio or company<input name="studio" autoComplete="organization" placeholder="Studio name" maxLength={160} required /></label><label>I work in<select name="role" required defaultValue=""><option value="" disabled>Select your field</option><option>Interior design</option><option>Architecture</option><option>Development</option><option>Other</option></select></label></div><label>What would you like to explore? <span className="optional">Optional</span><textarea name="context" placeholder="Material categories or a sourcing question…" rows={3} maxLength={1500} /></label><div className="honeypot" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>{status === "error" && <p className="form-error" role="alert">{error}</p>}<button className="button button-dark form-submit" disabled={status === "sending"} type="submit">{status === "sending" ? "Sending your request…" : "Request a demo"}<Arrow /></button><p className="form-privacy">We’ll use these details to respond to your demo request. Please don’t include confidential project information.</p></form></>}</div></div></dialog>;
 }
 
 export default function Home() {
@@ -82,6 +94,9 @@ export default function Home() {
   const [demoOpen, setDemoOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [navOnDark, setNavOnDark] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [loadingLeaving, setLoadingLeaving] = useState(false);
   const [faq, setFaq] = useState<number | null>(0);
   const [privacy, setPrivacy] = useState(false);
   useEffect(() => {
@@ -98,7 +113,7 @@ export default function Home() {
         anchors: true,
         prevent: node => node.closest("dialog") !== null,
       });
-      if (document.querySelector("dialog[open]")) scroll.stop();
+      if (document.querySelector(".brand-loader, dialog[open]")) scroll.stop();
       scrollRef.current = scroll;
     };
     configureScrolling();
@@ -110,11 +125,31 @@ export default function Home() {
     };
   }, []);
   useEffect(() => {
-    if (demoOpen) scrollRef.current?.stop();
+    if (demoOpen || loading) scrollRef.current?.stop();
     else scrollRef.current?.start();
-  }, [demoOpen]);
+  }, [demoOpen, loading]);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
+    if (!loading) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const fadeTimer = window.setTimeout(() => setLoadingLeaving(true), 2300);
+    const timer = window.setTimeout(() => setLoading(false), 3000);
+    return () => {
+      window.clearTimeout(fadeTimer);
+      window.clearTimeout(timer);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [loading]);
+  useEffect(() => {
+    const sections = [...document.querySelectorAll("main > section, footer")];
+    const onScroll = () => {
+      setScrolled(window.scrollY > 80);
+      const surface = sections.find(section => {
+        const bounds = section.getBoundingClientRect();
+        return bounds.top <= 32 && bounds.bottom > 32;
+      });
+      setNavOnDark(surface?.matches(".hero, .approach, .material-portrait, .final-cta") ?? false);
+    };
     onScroll(); window.addEventListener("scroll", onScroll, { passive: true });
     const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }); }, { threshold: 0.08 });
     document.querySelectorAll("[data-reveal]").forEach(node => observer.observe(node));
@@ -122,8 +157,9 @@ export default function Home() {
   }, []);
   const openDemo = () => { setMenuOpen(false); setDemoOpen(true); };
   return <>
+    <div className="site-content" inert={loading} aria-hidden={loading || undefined}>
     <a className="skip-link" href="#main">Skip to content</a>
-    <header className={`site-header ${scrolled || menuOpen ? "header-solid" : ""}`}><Brand /><nav className="desktop-nav" aria-label="Main navigation"><a href="#approach">What it does</a><a href="#platform">The platform</a><a href="#process">How it works</a></nav><div className="header-actions"><button className="nav-demo" onClick={openDemo}>Book a demo <Arrow diagonal /></button><button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}><span /><span /></button></div>{menuOpen && <nav className="mobile-nav" aria-label="Mobile navigation"><a href="#approach" onClick={() => setMenuOpen(false)}>What it does <Arrow diagonal /></a><a href="#platform" onClick={() => setMenuOpen(false)}>The platform <Arrow diagonal /></a><a href="#process" onClick={() => setMenuOpen(false)}>How it works <Arrow diagonal /></a><button onClick={openDemo}>Book a demo <Arrow diagonal /></button></nav>}</header>
+    <header className={`site-header ${scrolled || menuOpen ? "header-solid" : ""} ${navOnDark ? "header-on-dark" : ""}`}><Brand /><nav className="desktop-nav" aria-label="Main navigation"><a href="#approach">What it does</a><a href="#platform">The platform</a><a href="#process">How it works</a></nav><div className="header-actions"><button className="nav-demo" onClick={openDemo}>Book a demo <Arrow diagonal /></button><button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}><span /><span /></button></div>{menuOpen && <nav className="mobile-nav" aria-label="Mobile navigation"><a href="#approach" onClick={() => setMenuOpen(false)}>What it does <Arrow diagonal /></a><a href="#platform" onClick={() => setMenuOpen(false)}>The platform <Arrow diagonal /></a><a href="#process" onClick={() => setMenuOpen(false)}>How it works <Arrow diagonal /></a><button onClick={openDemo}>Book a demo <Arrow diagonal /></button></nav>}</header>
     <main id="main">
       <section className="hero" id="top"><img className="hero-image" src="/images/declan-sun-staircase.jpg" alt="Sweeping timber walls and an illuminated curved staircase photographed by Declan Sun" fetchPriority="high" /><div className="hero-shade" /><div className="hero-content"><div className="hero-heading"><h1>A new standard<br />for material sourcing</h1><button className="button button-light hero-button" onClick={openDemo}>Book a demo <Arrow diagonal /></button></div><div className="hero-description"><p>Bring your finish schedule. Compare suppliers, prices, and alternatives in one place.</p></div></div></section>
       <section className="approach section-padding" id="approach"><div className="section-label mono"><span>01</span> / WHAT IT DOES</div><div className="approach-body" data-reveal><h2>From finish schedule<br />to supplier quotes</h2><div className="approach-copy"><p>Oyra reads your schedule, finds suppliers and alternatives, and organizes their quotes.</p><p>Compare specifications, prices, and availability. Review samples and approve the selection with your team.</p></div></div></section>
@@ -135,5 +171,7 @@ export default function Home() {
     </main>
     <footer className="site-footer"><div className="footer-top"><p>Material sourcing software.<br />Architecture & interiors.</p><div><a href="#approach">What it does</a><a href="#platform">The platform</a><button onClick={openDemo}>Contact <Arrow diagonal /></button></div><span className="mono">NEW YORK</span></div><Brand large /><div className="footer-bottom mono"><span>© {new Date().getFullYear()} OYRA</span><button onClick={() => setPrivacy(!privacy)} aria-expanded={privacy}>PRIVACY {privacy ? "−" : "+"}</button></div>{privacy && <div className="privacy-copy"><h3>Your information</h3><p>Demo requests collect your name, email, company, field, and optional project context. Oyra stores these details to review and respond to your request. No advertising trackers are used. Don’t include confidential project information.</p></div>}</footer>
     {demoOpen && <DemoDialog onClose={() => setDemoOpen(false)} />}
+    </div>
+    {loading && <div className={`brand-loader${loadingLeaving ? " is-leaving" : ""}`} role="status" aria-label="Loading Oyra"><SlabMark animated /></div>}
   </>;
 }
