@@ -45,3 +45,16 @@ html{scroll-padding-top:72px}.site-header{height:88px;padding:0 6%}.brand{font-s
 
 /* Compact navigation and the unfiltered supplied photograph */
 .hero-image{filter:none;object-position:50% 47%}.hero-shade{background:linear-gradient(0deg,#00000055,transparent 58%)}.site-header:not(.header-solid){height:72px;color:#ffffff;background:transparent;border:0;isolation:isolate}.site-header:not(.header-solid)::before{content:"";position:absolute;top:0;left:0;right:0;height:155px;background:linear-gradient(180deg,#000000b3,transparent);z-index:-1;pointer-events:none}.site-header:not(.header-solid) .brand{font-size:38px;letter-spacing:-3px}.site-header:not(.header-solid) .nav-demo{height:38px;padding:0 14px;border-color:#ffffff88}.header-solid{height:64px}.header-solid .brand{font-size:36px;letter-spacing:-3px}.header-solid .nav-demo{height:36px;padding:0 14px}.hero-topline{top:112px;color:#ffffff;border-color:#ffffff44}.hero-topline>span{background:transparent;padding:0;text-shadow:0 1px 8px #00000044}@media(max-width:760px){.site-header:not(.header-solid){height:64px}.site-header:not(.header-solid) .brand{font-size:36px}.header-solid{height:64px}.hero-image{object-position:40% center;filter:none}.hero-topline{top:97px}.hero-topline>span{padding:0}.hero-shade{background:linear-gradient(0deg,#00000088,transparent 75%)}}
+
+/* Declan Sun staircase hero: retain photographic color and frame the darker middle band. */
+.hero-image{height:120%;object-position:50% 50%;filter:none}
+.hero-shade{background:linear-gradient(90deg,#00000030,transparent 75%),linear-gradient(0deg,#00000044,transparent 48%)}
+.hero-content{bottom:22%}
+.hero h1{font-size:clamp(46px,5.8vw,88px)}
+.hero-description{background:transparent;border:0;padding:0}
+@media(max-width:760px){
+  .hero-image{height:100%;object-position:62% center;filter:none}
+  .hero-content{top:42%;bottom:auto}
+  .hero h1{font-size:clamp(32px,8.2vw,56px)}
+  .hero-shade{background:linear-gradient(90deg,#00000033,transparent 85%),linear-gradient(0deg,#00000055,transparent 65%)}
+}

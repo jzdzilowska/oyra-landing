@@ -8,6 +8,8 @@ All demo buttons open an accessible dialog. Requests are saved in the `demo_requ
 
 Original hero and material-study imagery uses the built-in image generation tool. Assets live in `public/images`. Complete prompts and provenance are recorded in `public/images/asset-notes.txt`.
 
-The hero now uses the Daniel Sessler Unsplash photograph supplied by the user, in `public/images/architecture-hero.jpg`. The generated hero is retained as an unused alternative. Decorative periods are removed from the wordmarks and display headings.
+The hero uses the user-supplied Declan Sun Unsplash photograph, in `public/images/declan-sun-staircase.jpg`, showing curved timber walls and an illuminated stair. It is resized for web delivery with original colors retained. The previous Daniel Sessler photograph is retained in `public/images/architecture-hero.jpg`. The generated hero is retained as an unused alternative. Decorative periods are removed from the wordmarks and display headings.
 
 The latest direction uses a compact transparent navigation overlay with white text. Desktop header is 72 pixels, mobile header 64 pixels, and the scrolled header 64 pixels. The hero has no image color filter.
+
+Hero headline: “Keep the vision / Find a better source”. Text sits over the darker middle of the photograph, with a desktop crop that reduces the pale foreground wall and a separate mobile crop.

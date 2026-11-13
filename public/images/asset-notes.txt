@@ -1,6 +1,7 @@
-Hero currently used: architecture-hero.jpg
-User-supplied Daniel Sessler photograph: daniel-sessler-gtBVNF6pCU8-unsplash.jpg
-Original colors are retained with no image filter. File copied without pixel editing. A separate overlay supports text contrast.
+Hero currently used: declan-sun-staircase.jpg
+User-supplied Declan Sun photograph: declan-sun-J9NFc4iJmrA-unsplash.jpg
+Resized to 2880 px wide and JPEG-compressed for web delivery. Original colors are retained with no image filter. CSS crops adapt to desktop and mobile. A separate overlay supports text contrast.
+Previous user-supplied Daniel Sessler photograph is retained as architecture-hero.jpg.
 
 Original assets generated with the built-in image_gen tool.
 
