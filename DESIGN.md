@@ -29,3 +29,5 @@ The loading symbol is 72 px on desktop and 64 px on mobile. The black overlay be
 The symbol build runs on a 2.6-second animation timeline (slightly faster), completing its four segments before the loading overlay fades; total opening-screen duration remains three seconds.
 
 The hero content sits 64 px above the bottom of the image on desktop and mobile, reducing the previous 110 px gap.
+
+Section-name labels omit the slash after their numbers. The glass navbar has no border or separator shadow; the demo button retains its own outline.
