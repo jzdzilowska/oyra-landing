@@ -27,3 +27,5 @@ Navbar identity is compact (22 px symbol and 76 px wordmark on desktop; 20 px an
 The loading symbol is 72 px on desktop and 64 px on mobile. The black overlay begins fading after 2.3 seconds and fully reveals the page at 3 seconds, rather than cutting away.
 
 The symbol build runs on a 2.6-second animation timeline (slightly faster), completing its four segments before the loading overlay fades; total opening-screen duration remains three seconds.
+
+The hero content sits 64 px above the bottom of the image on desktop and mobile, reducing the previous 110 px gap.
