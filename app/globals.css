@@ -48,8 +48,7 @@ html{scroll-padding-top:72px}.site-header{height:88px;padding:0 6%}.brand{font-s
 
 /* Declan Sun staircase hero: retain photographic color and frame the darker middle band. */
 .hero-frame{background:#000000}
-.hero{border-radius:0}
-.hero-frame + .approach{position:relative;z-index:1;margin-top:-28px;border-radius:28px 28px 0 0}
+.hero{border-radius:0 0 28px 28px}
 .hero-image{top:-5%;bottom:auto;height:135%;object-position:50% 100%;filter:none}
 .hero-shade{background:linear-gradient(180deg,#00000055,transparent 42%),linear-gradient(90deg,#00000030,transparent 75%),linear-gradient(0deg,#00000044,transparent 48%)}
 .hero-content{top:50%;bottom:auto;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;text-align:center}
