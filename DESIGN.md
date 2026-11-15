@@ -57,3 +57,5 @@ Logo links return to the homepage from other pages and smoothly scroll to its to
 Navbar adjustment: desktop links stay right-aligned beside the demo action. Horizontal inset is clamp(20px, 3vw, 48px), reduced from 5.2%; links use 28 px gaps and no extra trailing margin. Mobile retains the logo/action layout with compact side spacing.
 
 Latest direction restores 28 px rounded bottom corners to the hero itself. The black introduction below is square, with no overlap; black remains behind the hero’s rounded corners.
+
+Page error review: restored the closer 135% desktop / 125% mobile hero crop and centered text. Shared Vinext browser modules now receive their public compile-time environment values through Vite’s parser, eliminating browser process/env errors during navigation and hot updates. Root HTML tolerates extension-added attributes without masking hydration checks in page content.

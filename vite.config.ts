@@ -1,5 +1,5 @@
 import vinext from "vinext";
-import { defineConfig } from "vite";
+import { defineConfig, transformWithOxc } from "vite";
 import hostingConfig from "./.openai/hosting.json";
 import { readExecutionProfile } from "./scripts/execution-profile.mjs";
 import { configureToolEnvironment } from "./scripts/tool-environment.mjs";
@@ -44,8 +44,6 @@ export default defineConfig(async ({ command }) => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
-    // Vinext's navigation failure handler needs this browser compile-time flag.
-    define: { "process.env.__NEXT_APP_NAV_FAIL_HANDLING": "true" },
     server: {
       ...(managedLinux
         ? { host: "0.0.0.0", allowedHosts: ["terminal.local"] }
@@ -55,6 +53,19 @@ export default defineConfig(async ({ command }) => {
         : {}),
     },
     plugins: [
+      {
+        name: "oyra-vinext-browser-defines",
+        enforce: "pre",
+        async transform(code: string, id: string) {
+          if (this.environment.name !== "client" || !id.includes("/node_modules/vinext/dist/") || !code.includes("process.env")) return null;
+          // Apply Vinext's public compile-time flags to its shared browser modules too.
+          const define: Record<string, string> = { "process.env": "{}" };
+          for (const [key, value] of Object.entries(this.environment.config.define ?? {})) {
+            if (key.startsWith("process.env.")) define[key] = typeof value === "string" ? value : JSON.stringify(value);
+          }
+          return transformWithOxc(code, id.split("?")[0], { define, sourcemap: true });
+        },
+      },
       vinext(),
       sites({ mockAuth: !managedLinux }),
       connectorPreview(),
