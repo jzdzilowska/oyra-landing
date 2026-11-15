@@ -37,3 +37,5 @@ Navigation now links to dedicated Platform, About, and Contact pages, with an ac
 Internal page changes fade content out over 180 ms and in over 420 ms using client navigation. The header stays visible. Returning home through internal links skips the opening loader; direct homepage visits retain it. Modified clicks, external links, downloads, and section anchors retain their native behavior. Reduced-motion preferences remove the transition delay and animation.
 
 The loading symbol is further reduced to 48 px on desktop and 40 px on mobile; its animation timing and the background fade are unchanged.
+
+The homepage hero headline is slightly smaller: clamp(44px, 5.4vw, 82px) on desktop and clamp(30px, 7.8vw, 54px) on mobile, retaining its two-line composition and spacing.

@@ -50,12 +50,12 @@ html{scroll-padding-top:72px}.site-header{height:88px;padding:0 6%}.brand{font-s
 .hero-image{top:-20%;bottom:auto;height:120%;object-position:50% 100%;filter:none}
 .hero-shade{background:linear-gradient(90deg,#00000030,transparent 75%),linear-gradient(0deg,#00000044,transparent 48%)}
 .hero-content{bottom:64px}
-.hero h1{font-size:clamp(46px,5.8vw,88px)}
+.hero h1{font-size:clamp(44px,5.4vw,82px)}
 .hero-description{background:transparent;border:0;padding:0}
 @media(max-width:760px){
   .hero-image{top:-12%;bottom:auto;height:112%;object-position:62% 100%;filter:none}
   .hero-content{top:auto;bottom:64px}
-  .hero h1{font-size:clamp(32px,8.2vw,56px)}
+  .hero h1{font-size:clamp(30px,7.8vw,54px)}
   .hero-shade{background:linear-gradient(90deg,#00000033,transparent 85%),linear-gradient(0deg,#00000055,transparent 65%)}
 }
 
