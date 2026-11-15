@@ -103,3 +103,55 @@ html.lenis,html.lenis body{height:auto}
 .site-header.header-solid::after{opacity:1}
 .site-header.header-solid{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;animation:none}
 .site-header .nav-demo{transition:height .45s ease,border-color .4s ease,color .4s ease}
+
+/* Main pages share the restrained navigation and editorial grid. */
+.desktop-nav a[aria-current=page]:after{right:0}
+.page-masthead{padding-top:175px;padding-bottom:85px}
+.page-masthead h1,.contact-intro h1{font-size:clamp(44px,5.8vw,82px);line-height:1.08;letter-spacing:-.06em;margin-top:34px;max-width:1000px}
+.page-masthead>p{max-width:560px;margin-top:35px;font-size:16px;line-height:1.8}
+.material-scope{border-top:1px solid var(--line);padding-top:55px;padding-bottom:65px}
+.scope-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6%;margin-top:45px}
+.scope-grid article{border-top:1px solid var(--line);padding-top:20px}
+.scope-grid h2{font-size:29px;letter-spacing:-.04em;margin:24px 0 15px;line-height:1.2}
+.scope-grid p,.scope-note{font-size:13px;line-height:1.8;max-width:330px;color:#666666}
+.scope-note{max-width:none;margin-top:42px}
+.about-body,.about-location{display:grid;grid-template-columns:1fr 2.25fr;gap:7%;border-top:1px solid var(--line)}
+.about-copy h2,.about-location h2{font-size:clamp(34px,4.2vw,60px);line-height:1.13;letter-spacing:-.055em;margin-bottom:32px}
+.about-copy>p{font-size:15px;line-height:1.9;max-width:660px;margin-top:20px}
+.about-principles{margin-top:55px}
+.about-principles article{padding:25px 0;border-top:1px solid var(--line)}
+.about-principles h3{font-size:21px;letter-spacing:-.03em}
+.about-principles p,.about-location p{font-size:14px;line-height:1.8;max-width:600px;margin-top:12px;color:#666666}
+.about-location .text-link{margin-top:30px}
+.contact-page{display:grid;grid-template-columns:1fr 1.15fr;gap:10%;padding-top:175px;min-height:800px}
+.contact-intro h1{font-size:clamp(44px,5.5vw,76px)}
+.contact-intro>p{font-size:15px;line-height:1.8;max-width:350px;margin-top:28px}
+.contact-demo{margin-top:60px;max-width:350px;border-top:1px solid var(--line);padding-top:27px}
+.contact-demo h2{font-size:24px;letter-spacing:-.035em}
+.contact-demo p{font-size:13px;line-height:1.8;margin-top:15px;color:#666666}
+.contact-demo .text-link{margin-top:25px}
+.contact-location{display:block;margin-top:55px}
+.contact-panel .dialog-layout{display:block;min-height:0}
+.contact-panel .dialog-visual{display:none}
+.contact-panel .dialog-content{padding:0}
+.contact-panel .dialog-content h2{font-size:36px}
+.contact-panel .dialog-content label{font-size:12px}
+.contact-panel .dialog-content input,.contact-panel .dialog-content select,.contact-panel .dialog-content textarea{font-size:14px}
+.contact-panel .form-intro{font-size:13px;max-width:420px}
+.contact-panel .form-privacy{font-size:11px;color:#666666}
+@media(max-width:760px){
+  .page-masthead{padding-top:125px;padding-bottom:60px}
+  .page-masthead h1,.contact-intro h1{font-size:clamp(36px,8vw,58px);margin-top:28px}
+  .page-masthead>p{font-size:14px;margin-top:26px}
+  .scope-grid{grid-template-columns:1fr;gap:35px;margin-top:35px}
+  .scope-grid h2{font-size:26px;margin-top:16px}
+  .scope-grid p{max-width:none}
+  .about-body,.about-location{display:block}
+  .about-copy,.about-location>div{margin-top:35px}
+  .about-copy>p{font-size:14px}
+  .contact-page{display:block;padding-top:125px}
+  .contact-demo{margin-top:35px}
+  .contact-location{margin-top:35px}
+  .contact-panel{margin-top:60px;padding-top:35px;border-top:1px solid var(--line)}
+  .contact-panel .dialog-content input,.contact-panel .dialog-content select,.contact-panel .dialog-content textarea{font-size:16px}
+}

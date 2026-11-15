@@ -31,3 +31,5 @@ The symbol build runs on a 2.6-second animation timeline (slightly faster), comp
 The hero content sits 64 px above the bottom of the image on desktop and mobile, reducing the previous 110 px gap.
 
 Section-name labels omit the slash after their numbers. The glass navbar has no border or separator shadow; the demo button retains its own outline.
+
+Navigation now links to dedicated Platform, About, and Contact pages, with an active-page indicator. Platform combines material categories and the software workflow; About describes Oyra’s approach without invented history or credentials. Contact has a general enquiry form, and all demo CTAs read “Request a demo”. Contact enquiries share the existing D1 request table with a contact marker; no email notification or scheduling integration has been added. The opening animation remains on the homepage only.

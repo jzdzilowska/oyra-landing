@@ -5,13 +5,14 @@ import { demoRequests } from "../../../db/schema";
 
 const demoSchema = z.object({
   id: z.string().uuid(),
+  kind: z.enum(["demo", "contact"]).optional().default("demo"),
   name: z.string().trim().min(1).max(120),
   email: z.string().trim().email().max(254).transform(value => value.toLowerCase()),
   studio: z.string().trim().min(1).max(160),
-  role: z.enum(["Interior design", "Architecture", "Development", "Other"]),
+  role: z.enum(["Interior design", "Architecture", "Development", "Supplier", "Other"]),
   context: z.string().trim().max(1500).optional().default(""),
   website: z.string().max(500).optional().default(""),
-});
+}).refine(data => data.kind !== "contact" || data.context.length > 0, { message: "Please include your enquiry.", path: ["context"] });
 
 export async function POST(request: Request) {
   const origin = request.headers.get("origin");
@@ -22,7 +23,8 @@ export async function POST(request: Request) {
   const parsed = demoSchema.safeParse(input);
   if (!parsed.success) return Response.json({ error: "Please check your name, work email, company, and field." }, { status: 400 });
   if (parsed.data.website) return Response.json({ received: true });
-  const { website: _, ...data } = parsed.data;
+  const { website: _, kind, ...data } = parsed.data;
+  if (kind === "contact") data.context = `[Contact enquiry]\n${data.context}`;
   try {
     const db = getDb();
     const existing = await db.select({ id: demoRequests.id }).from(demoRequests).where(eq(demoRequests.id, data.id)).get();

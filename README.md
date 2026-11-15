@@ -1,6 +1,6 @@
 # Oyra landing page
 
-A responsive, monochrome website for Oyra material sourcing software. The site introduces the workflow, includes an interactive example of a finish schedule and source comparison, and collects demo requests.
+A responsive, monochrome website for Oyra material sourcing software. The site introduces the workflow, includes an interactive example of a finish schedule and source comparison, and collects demo requests and general enquiries. Dedicated pages are available at `/platform`, `/about`, and `/contact`.
 
 ## Run locally
 
@@ -15,7 +15,7 @@ Open the local URL printed by the server. The framework is Vinext with React and
 
 ## Demo requests
 
-The form posts to `/api/demo`. Valid requests are stored in the Cloudflare D1 `demo_requests` table. The endpoint validates input, rejects cross-origin submissions, handles duplicate request IDs, and limits repeat submissions from the same email. There is no public endpoint exposing requests.
+The form posts to `/api/demo`. Valid requests are stored in the Cloudflare D1 `demo_requests` table. General enquiries use `kind: "contact"` and are stored with a `[Contact enquiry]` context marker. The endpoint validates input, rejects cross-origin submissions, handles duplicate request IDs, and limits repeat submissions from the same email. There is no public endpoint exposing requests.
 
 No calendar or email notification integration is configured. The form confirms receipt, not a booked meeting. Add scheduling and inbox notifications before using the site for a public acquisition campaign.
 
@@ -47,6 +47,6 @@ The `.openai/hosting.json` file retains the private Sites project identity and D
 
 ## Images and type
 
-The hero uses the Daniel Sessler Unsplash photograph supplied by the owner. The hero uses the original photograph colors without an image filter. A separate overlay supports text contrast. The material study is an original generated illustration. Details are recorded in `public/images/asset-notes.txt`. Manrope is served locally with its font license.
+The hero uses the Declan Sun Unsplash staircase photograph supplied by the owner. The hero uses the original photograph colors without an image filter. A separate overlay supports text contrast. The material study is an original generated illustration. Details are recorded in `public/images/asset-notes.txt`. Manrope is served locally with its font license.
 
 The product example uses illustrative data and is not a live supplier catalog or quotation.
