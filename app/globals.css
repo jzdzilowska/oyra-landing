@@ -103,9 +103,9 @@ html.lenis,html.lenis body{height:auto}
 @media(prefers-reduced-motion:reduce){.is-animated .slab-block{animation:none;transform:none}}
 
 /* A fixed header lets the glass dissolve in both scroll directions without a position jump. */
-.site-header{position:fixed;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);padding-inline:clamp(20px,3vw,48px);gap:28px;transition:height .45s ease,color .4s ease}
+.site-header{position:fixed;isolation:isolate;display:flex;padding-inline:clamp(20px,3vw,48px);gap:28px;transition:height .45s ease,color .4s ease}
 .site-header>.brand{justify-self:start}
-.desktop-nav{gap:28px;margin:0;justify-self:center}
+.desktop-nav{gap:28px;margin:0 0 0 auto}
 .header-actions{justify-self:end}
 @media(max-width:760px){.site-header{display:flex;gap:16px}.mobile-nav{padding-inline:20px}}
 .site-header::before{content:"";position:absolute;inset:0 0 auto;height:155px;background:linear-gradient(180deg,#000000b3,transparent);z-index:-1;pointer-events:none;opacity:1;transition:opacity .45s ease}

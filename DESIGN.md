@@ -54,4 +54,4 @@ Correction: rounding belongs to the black introduction section below the hero. I
 
 Logo links return to the homepage from other pages and smoothly scroll to its top when already home. Current-page navigation links also return to the top; reduced motion uses an immediate scroll.
 
-Local navbar adjustment: desktop links are centered independently between the logo and demo action. Horizontal inset is clamp(20px, 3vw, 48px), reduced from 5.2%; links use 28 px gaps and no extra trailing margin. Mobile retains the logo/action layout with compact side spacing.
+Navbar adjustment: desktop links stay right-aligned beside the demo action. Horizontal inset is clamp(20px, 3vw, 48px), reduced from 5.2%; links use 28 px gaps and no extra trailing margin. Mobile retains the logo/action layout with compact side spacing.
