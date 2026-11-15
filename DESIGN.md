@@ -33,3 +33,7 @@ The hero content sits 64 px above the bottom of the image on desktop and mobile,
 Section-name labels omit the slash after their numbers. The glass navbar has no border or separator shadow; the demo button retains its own outline.
 
 Navigation now links to dedicated Platform, About, and Contact pages, with an active-page indicator. Platform combines material categories and the software workflow; About describes Oyra’s approach without invented history or credentials. Contact has a general enquiry form, and all demo CTAs read “Request a demo”. Contact enquiries share the existing D1 request table with a contact marker; no email notification or scheduling integration has been added. The opening animation remains on the homepage only.
+
+Internal page changes fade content out over 180 ms and in over 420 ms using client navigation. The header stays visible. Returning home through internal links skips the opening loader; direct homepage visits retain it. Modified clicks, external links, downloads, and section anchors retain their native behavior. Reduced-motion preferences remove the transition delay and animation.
+
+The loading symbol is further reduced to 48 px on desktop and 40 px on mobile; its animation timing and the background fade are unchanged.

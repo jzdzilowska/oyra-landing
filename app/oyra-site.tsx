@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import Lenis from "lenis";
+import { useInternalNavigation } from "./page-transitions";
 
 type SitePage = "home" | "platform" | "about" | "contact";
 const navigation = [{ label: "Platform", href: "/platform", page: "platform" }, { label: "About", href: "/about", page: "about" }, { label: "Contact", href: "/contact", page: "contact" }];
@@ -96,12 +97,13 @@ function RequestForm({ onClose = () => {}, contact = false }: { onClose?: () => 
 }
 
 export default function OyraSite({ page = "home" }: { page?: SitePage }) {
+  const internallyNavigated = useInternalNavigation();
   const scrollRef = useRef<Lenis | null>(null);
   const [demoOpen, setDemoOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [navOnDark, setNavOnDark] = useState(page === "home");
-  const [loading, setLoading] = useState(page === "home");
+  const [loading, setLoading] = useState(page === "home" && !internallyNavigated);
   const [loadingLeaving, setLoadingLeaving] = useState(false);
   const [faq, setFaq] = useState<number | null>(0);
   const [privacy, setPrivacy] = useState(false);
@@ -166,7 +168,7 @@ export default function OyraSite({ page = "home" }: { page?: SitePage }) {
     <div className="site-content" inert={loading} aria-hidden={loading || undefined}>
     <a className="skip-link" href="#main">Skip to content</a>
     <header className={`site-header ${scrolled || menuOpen || page !== "home" ? "header-solid" : ""} ${navOnDark ? "header-on-dark" : ""}`}><Brand /><nav className="desktop-nav" aria-label="Main navigation">{navigation.map(item => <a key={item.page} href={item.href} aria-current={page === item.page ? "page" : undefined}>{item.label}</a>)}</nav><div className="header-actions"><button className="nav-demo" onClick={openDemo}>Request a demo <Arrow diagonal /></button><button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}><span /><span /></button></div>{menuOpen && <nav className="mobile-nav" aria-label="Mobile navigation">{navigation.map(item => <a key={item.page} href={item.href} aria-current={page === item.page ? "page" : undefined} onClick={() => setMenuOpen(false)}>{item.label}<Arrow diagonal /></a>)}<button onClick={openDemo}>Request a demo <Arrow diagonal /></button></nav>}</header>
-    <main id="main">
+    <main id="main" tabIndex={-1}>
     {page === "home" && <>
 
       <section className="hero" id="top"><img className="hero-image" src="/images/declan-sun-staircase.jpg" alt="Sweeping timber walls and an illuminated curved staircase photographed by Declan Sun" fetchPriority="high" /><div className="hero-shade" /><div className="hero-content"><div className="hero-heading"><h1>A new standard<br />for material sourcing</h1><button className="button button-light hero-button" onClick={openDemo}>Request a demo <Arrow diagonal /></button></div><div className="hero-description"><p>Bring your finish schedule. Compare suppliers, prices, and alternatives in one place.</p></div></div></section>

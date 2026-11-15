@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import PageTransitions from "./page-transitions";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://oyra-materials.phia-4091.chatgpt.site"),
@@ -19,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased"><PageTransitions>{children}</PageTransitions></body>
     </html>
   );
 }

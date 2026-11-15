@@ -44,6 +44,8 @@ export default defineConfig(async ({ command }) => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    // Vinext's navigation failure handler needs this browser compile-time flag.
+    define: { "process.env.__NEXT_APP_NAV_FAIL_HANDLING": "true" },
     server: {
       ...(managedLinux
         ? { host: "0.0.0.0", allowedHosts: ["terminal.local"] }

@@ -81,7 +81,7 @@ html.lenis,html.lenis body{height:auto}
 .header-solid.header-on-dark{color:#ffffff}
 .header-solid .nav-demo{border-color:currentColor}
 .brand-loader{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:#000000;color:#ffffff;opacity:1;transition:opacity .7s ease}
-.brand-loader .slab-mark{width:72px;height:72px;display:block}
+.brand-loader .slab-mark{width:48px;height:48px;display:block}
 .brand-loader.is-leaving{opacity:0}
 .slab-block{transform-box:fill-box}
 .is-animated .slab-top{transform-origin:right center;animation:slab-top-build 2.6s cubic-bezier(.65,0,.35,1) both}
@@ -92,7 +92,7 @@ html.lenis,html.lenis body{height:auto}
 @keyframes slab-left-build{0%,20%{transform:scaleY(0)}36%,100%{transform:scaleY(1)}}
 @keyframes slab-bottom-build{0%,36%{transform:scaleX(0)}52%,100%{transform:scaleX(1)}}
 @keyframes slab-right-build{0%,52%{transform:scaleY(0)}68%,100%{transform:scaleY(1)}}
-@media(max-width:760px){.site-header .brand-lockup{gap:8px}.brand-lockup .slab-mark{width:20px;height:20px}.brand-wordmark{width:69px;height:20px}.brand-large{margin:35px 0}.brand-loader .slab-mark{width:64px;height:64px}}
+@media(max-width:760px){.site-header .brand-lockup{gap:8px}.brand-lockup .slab-mark{width:20px;height:20px}.brand-wordmark{width:69px;height:20px}.brand-large{margin:35px 0}.brand-loader .slab-mark{width:40px;height:40px}}
 @media(prefers-reduced-motion:reduce){.is-animated .slab-block{animation:none;transform:none}}
 
 /* A fixed header lets the glass dissolve in both scroll directions without a position jump. */
@@ -105,6 +105,12 @@ html.lenis,html.lenis body{height:auto}
 .site-header .nav-demo{transition:height .45s ease,border-color .4s ease,color .4s ease}
 
 /* Main pages share the restrained navigation and editorial grid. */
+.page-transition main,.page-transition .site-footer{transition:opacity .18s ease}
+.page-transition[data-phase=leaving] main,.page-transition[data-phase=leaving] .site-footer{opacity:0;pointer-events:none}
+.page-transition[data-phase=entering] main,.page-transition[data-phase=entering] .site-footer{animation:page-enter .42s cubic-bezier(.2,.65,.3,1) both}
+main:focus{outline:none}
+@keyframes page-enter{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.page-transition main,.page-transition .site-footer{animation:none!important;transition:none!important;opacity:1!important}}
 .desktop-nav a[aria-current=page]:after{right:0}
 .page-masthead{padding-top:175px;padding-bottom:85px}
 .page-masthead h1,.contact-intro h1{font-size:clamp(44px,5.8vw,82px);line-height:1.08;letter-spacing:-.06em;margin-top:34px;max-width:1000px}
