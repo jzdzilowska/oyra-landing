@@ -39,3 +39,19 @@ Internal page changes fade content out over 180 ms and in over 420 ms using clie
 The loading symbol is further reduced to 48 px on desktop and 40 px on mobile; its animation timing and the background fade are unchanged.
 
 The homepage hero headline is slightly smaller: clamp(44px, 5.4vw, 82px) on desktop and clamp(30px, 7.8vw, 54px) on mobile, retaining its two-line composition and spacing.
+
+Local hero trial: the headline, demo button, and supporting sentence are centered horizontally and vertically as a single group. The smaller headline uses clamp(40px, 4.8vw, 74px) on desktop and clamp(28px, 7.2vw, 50px) on mobile. Publishing is batched at the owner’s request.
+
+Local image framing trial: hero photo enlarged to 135% height and shifted down (top -5%) on desktop; 125% height with top 0 on mobile. Architectural detail sits lower, exposing more of the upper wall above the centered text. Original photograph colors are retained.
+
+Local hero refinement: 28 px rounding on the bottom corners. Centered content reads headline, supporting sentence, then demo button, with the existing stack spacing.
+
+The rounded hero sits in a black frame so the bottom corner cutouts blend into the black introduction section.
+
+Local refinement: bottom hero corners are concave 28 px cutouts against the black frame, rather than outward rounded corners. A subtle black gradient fades from the top to transparent at 42% of the hero; image colors remain unfiltered.
+
+Correction: rounding belongs to the black introduction section below the hero. Its 28 px top corners overlap the photo by 28 px; the hero itself has square corners and no corner mask. Top vignette is retained.
+
+Logo links return to the homepage from other pages and smoothly scroll to its top when already home. Current-page navigation links also return to the top; reduced motion uses an immediate scroll.
+
+Local navbar adjustment: desktop links are centered independently between the logo and demo action. Horizontal inset is clamp(20px, 3vw, 48px), reduced from 5.2%; links use 28 px gaps and no extra trailing margin. Mobile retains the logo/action layout with compact side spacing.

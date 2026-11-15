@@ -41,6 +41,9 @@ export default function PageTransitions({ children }: { children: ReactNode }) {
     if (destination.origin !== window.location.origin || !routes.has(destination.pathname) || destination.hash) return;
     if (destination.pathname === pathname && destination.search === window.location.search) {
       event.preventDefault();
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reducedMotion ? "instant" : "smooth" });
+      document.querySelector<HTMLElement>("main")?.focus({ preventScroll: true });
       return;
     }
     event.preventDefault();

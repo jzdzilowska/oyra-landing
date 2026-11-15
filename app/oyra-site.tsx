@@ -149,7 +149,7 @@ export default function OyraSite({ page = "home" }: { page?: SitePage }) {
     };
   }, [loading]);
   useEffect(() => {
-    const sections = [...document.querySelectorAll("main > section, footer")];
+    const sections = [...document.querySelectorAll("main > section, main > .hero-frame > section, footer")];
     const onScroll = () => {
       setScrolled(window.scrollY > 80);
       const surface = sections.find(section => {
@@ -171,7 +171,7 @@ export default function OyraSite({ page = "home" }: { page?: SitePage }) {
     <main id="main" tabIndex={-1}>
     {page === "home" && <>
 
-      <section className="hero" id="top"><img className="hero-image" src="/images/declan-sun-staircase.jpg" alt="Sweeping timber walls and an illuminated curved staircase photographed by Declan Sun" fetchPriority="high" /><div className="hero-shade" /><div className="hero-content"><div className="hero-heading"><h1>A new standard<br />for material sourcing</h1><button className="button button-light hero-button" onClick={openDemo}>Request a demo <Arrow diagonal /></button></div><div className="hero-description"><p>Bring your finish schedule. Compare suppliers, prices, and alternatives in one place.</p></div></div></section>
+      <div className="hero-frame"><section className="hero" id="top"><img className="hero-image" src="/images/declan-sun-staircase.jpg" alt="Sweeping timber walls and an illuminated curved staircase photographed by Declan Sun" fetchPriority="high" /><div className="hero-shade" /><div className="hero-content"><div className="hero-heading"><h1>A new standard<br />for material sourcing</h1></div><div className="hero-description"><p>Bring your finish schedule. Compare suppliers, prices, and alternatives in one place.</p></div><button className="button button-light hero-button" onClick={openDemo}>Request a demo <Arrow diagonal /></button></div></section></div>
       <section className="approach section-padding" id="approach"><div className="section-label mono"><span>01</span> WHAT IT DOES</div><div className="approach-body" data-reveal><h2>From finish schedule<br />to supplier quotes</h2><div className="approach-copy"><p>Oyra reads your schedule, finds suppliers and alternatives, and organizes their quotes.</p><p>Compare specifications, prices, and availability. Review samples and approve the selection with your team.</p></div></div></section>
       <section className="material-portrait" aria-label="Architectural material study"><img src="/images/material-study.png" alt="Stone, timber, and textile material samples in monochrome" loading="lazy" /><div className="portrait-overlay" /><div className="portrait-top mono"><span>MATERIAL STUDY</span><span>STONE / TIMBER / SURFACE FINISHES</span></div><div className="material-coordinate coordinate-one"><i /><span className="mono">01 / STONE</span></div><div className="material-coordinate coordinate-two"><i /><span className="mono">02 / TIMBER</span></div></section>
       <section className="platform section-padding" id="platform"><div className="platform-intro"><div className="section-label mono"><span>02</span> THE PLATFORM</div><div data-reveal><h2>Compare your options</h2><p>Explore an example schedule and source comparison below.</p></div></div><div data-reveal><ProductStudy /></div><div className="platform-caption mono"><span>INTERACTIVE PRODUCT EXAMPLE</span><span>EXAMPLE DATA / NOT LIVE QUOTES</span></div></section>
