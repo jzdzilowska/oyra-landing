@@ -59,3 +59,5 @@ Navbar adjustment: desktop links stay right-aligned beside the demo action. Hori
 Latest direction restores 28 px rounded bottom corners to the hero itself. The black introduction below is square, with no overlap; black remains behind the hero’s rounded corners.
 
 Page error review: restored the closer 135% desktop / 125% mobile hero crop and centered text. Shared Vinext browser modules now receive their public compile-time environment values through Vite’s parser, eliminating browser process/env errors during navigation and hot updates. Root HTML tolerates extension-added attributes without masking hydration checks in page content.
+
+Homepage content revision: the product overview follows the hero immediately on black. Removed the repeated introduction and standalone material photo. The comparison shows illustrative quotation terms, lead times, minimum orders, sample status, and technical review, with schedule and approvals views. Three capability descriptions and a clearly labelled worked example replace the repeated onboarding steps. FAQ and final demo CTA use direct buyer-oriented copy. The chosen hero design and opening animation are retained.
