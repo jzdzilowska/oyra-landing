@@ -1,8 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import Lenis from "lenis";
 import { useInternalNavigation } from "./page-transitions";
+
+let introSeenInMemory = false;
+const introSessionKey = "oyra:intro-seen";
 
 type SitePage = "home" | "platform" | "about" | "contact";
 const navigation = [{ label: "Platform", href: "/platform", page: "platform" }, { label: "About", href: "/about", page: "about" }, { label: "Contact", href: "/contact", page: "contact" }];
@@ -192,10 +195,21 @@ export default function OyraSite({ page = "home" }: { page?: SitePage }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [navOnDark, setNavOnDark] = useState(page === "home");
-  const [loading, setLoading] = useState(page === "home" && !internallyNavigated);
+  const [loading, setLoading] = useState(false);
   const [loadingLeaving, setLoadingLeaving] = useState(false);
   const [faq, setFaq] = useState<number | null>(0);
   const [privacy, setPrivacy] = useState(false);
+  useLayoutEffect(() => {
+    let seen = introSeenInMemory;
+    try {
+      seen = seen || window.sessionStorage.getItem(introSessionKey) === "1";
+      window.sessionStorage.setItem(introSessionKey, "1");
+    } catch {
+      // Keep repeat navigation unobstructed when browser storage is unavailable.
+    }
+    introSeenInMemory = true;
+    if (page === "home" && !internallyNavigated && !seen) setLoading(true);
+  }, [page, internallyNavigated]);
   useEffect(() => {
     const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     const configureScrolling = () => {

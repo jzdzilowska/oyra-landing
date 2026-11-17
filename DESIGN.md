@@ -69,3 +69,5 @@ Professional interaction refinement: replaced the static capability cards with a
 About page founder section: added Julia Zdzilowska’s supplied portrait in its original colour, with a restrained rectangular layout, founder title, New York location, and a brief biography limited to her full-stack engineering background and role developing Oyra. The photo is optimized as a JPEG; the homepage remains product-led.
 
 About story update: replaced the founder biography with the approved first-person company narrative. Removed the Founder heading and role label, retained Julia’s name, and expanded the portrait by using the full section width for the two-column composition. The section remains pure black with white text; the navbar switches to white over it.
+
+Opening animation now runs once per browser tab session. Session storage retains the visit flag across reloads and full-page returns; an in-memory fallback handles unavailable storage. Entering through another page also counts as a visit. Existing internal page fades remain unchanged.
